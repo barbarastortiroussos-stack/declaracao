@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Kaique Taisson</title>
+<style>
+  :root{
+    --rosa-claro: #ffe4ec;
+    --rosa: #ff7096;
+    --rosa-forte: #ff3d68;
+    --vermelho: #d1102e;
+    --vermelho-escuro: #a10a22;
+    --branco: #fffafa;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    font-family: 'Georgia', 'Times New Roman', serif;
+  }
+
+  body {
+    background: linear-gradient(160deg, var(--branco) 0%, var(--rosa-claro) 55%, #ffc9d6 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .bg-heart {
+    position: absolute;
+    bottom: -10%;
+    color: var(--rosa);
+    opacity: 0.35;
+    animation: subir linear infinite;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  @keyframes subir {
+    0% { transform: translateY(0) rotate(0deg) scale(1); opacity: 0; }
+    10% { opacity: 0.35; }
+    90% { opacity: 0.25; }
+    100% { transform: translateY(-115vh) rotate(15deg) scale(1.1); opacity: 0; }
+  }
+
+  .conteudo {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 32px 24px;
+    max-width: 640px;
+  }
+
+  .heart {
+    position: relative;
+    width: 140px;
+    height: 126px;
+    margin-bottom: 40px;
+    animation: bater 1.15s ease-in-out infinite;
+    filter: drop-shadow(0 10px 28px rgba(161, 10, 34, 0.45));
+  }
+
+  .heart::before,
+  .heart::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 76px;
+    height: 122px;
+    border-radius: 76px 76px 0 0;
+    background: linear-gradient(145deg, var(--vermelho), var(--vermelho-escuro));
+  }
+
+  .heart::before {
+    left: 70px;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+  }
+
+  .heart::after {
+    left: -6px;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+  }
+
+  @keyframes bater {
+    0%   { transform: scale(1); }
+    15%  { transform: scale(1.15); }
+    30%  { transform: scale(0.95); }
+    45%  { transform: scale(1.1); }
+    60%  { transform: scale(1); }
+    100% { transform: scale(1); }
+  }
+
+  .brilho {
+    position: absolute;
+    top: 26px;
+    left: 34px;
+    width: 20px;
+    height: 20px;
+    background: rgba(255,255,255,0.5);
+    border-radius: 50%;
+    filter: blur(2px);
+  }
+
+  .frase {
+    font-size: clamp(1.25rem, 3.6vw, 1.9rem);
+    line-height: 1.55;
+    color: #4a2532;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+  }
+
+  .frase .destaque {
+    color: var(--vermelho);
+    font-style: italic;
+  }
+
+  .nome {
+    margin-top: 6px;
+    font-size: clamp(1.4rem, 4vw, 2rem);
+    color: var(--vermelho-escuro);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  .contador-wrapper {
+    margin-top: 34px;
+    background: rgba(255,255,255,0.55);
+    border: 1px solid rgba(209, 16, 46, 0.25);
+    border-radius: 18px;
+    padding: 18px 22px;
+    backdrop-filter: blur(4px);
+  }
+
+  .contador-titulo {
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--rosa-forte);
+    margin-bottom: 10px;
+    opacity: 0.85;
+  }
+
+  .contador {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .unidade {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 56px;
+  }
+
+  .unidade .valor {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--vermelho-escuro);
+    font-family: 'Georgia', serif;
+  }
+
+  .unidade .rotulo {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #8a4b58;
+    margin-top: 2px;
+  }
+
+  .assinatura {
+    margin-top: 22px;
+    font-size: 1rem;
+    color: var(--vermelho);
+    opacity: 0.8;
+    letter-spacing: 1px;
+  }
+</style>
+</head>
+<body>
+
+  <div class="conteudo">
+    <div class="heart">
+      <span class="brilho"></span>
+    </div>
+    <p class="frase">
+      Em um universo vasto, cheio de bilhões<br>
+      de criaturas e corações,<br>
+      o meu <span class="destaque">escolheu</span> o seu.
+    </p>
+    <div class="nome">Kaique Taisson</div>
+
+    <div class="contador-wrapper">
+      <div class="contador-titulo">Juntos há</div>
+      <div class="contador" id="contador">
+        <div class="unidade"><span class="valor" id="dias">0</span><span class="rotulo">dias</span></div>
+        <div class="unidade"><span class="valor" id="horas">0</span><span class="rotulo">horas</span></div>
+        <div class="unidade"><span class="valor" id="minutos">0</span><span class="rotulo">min</span></div>
+        <div class="unidade"><span class="valor" id="segundos">0</span><span class="rotulo">seg</span></div>
+      </div>
+    </div>
+
+    <div class="assinatura">♥</div>
+  </div>
+
+<script>
+  // ======================================================
+  // EDITE AQUI a data/hora de início do namoro:
+  // formato: 'AAAA-MM-DDTHH:MM:SS'
+  const dataInicio = new Date('2026-09-01T23:40:00');
+  // ======================================================
+
+  function atualizarContador() {
+    const agora = new Date();
+    let diff = Math.max(0, agora - dataInicio) / 1000;
+
+    const dias = Math.floor(diff / 86400);
+    diff -= dias * 86400;
+    const horas = Math.floor(diff / 3600);
+    diff -= horas * 3600;
+    const minutos = Math.floor(diff / 60);
+    diff -= minutos * 60;
+    const segundos = Math.floor(diff);
+
+    document.getElementById('dias').textContent = dias;
+    document.getElementById('horas').textContent = String(horas).padStart(2, '0');
+    document.getElementById('minutos').textContent = String(minutos).padStart(2, '0');
+    document.getElementById('segundos').textContent = String(segundos).padStart(2, '0');
+  }
+
+  atualizarContador();
+  setInterval(atualizarContador, 1000);
+
+  const totalCoracoes = 14;
+  const body = document.body;
+
+  for (let i = 0; i < totalCoracoes; i++) {
+    const h = document.createElement('div');
+    h.className = 'bg-heart';
+    h.innerHTML = '♥';
+    const tamanho = 14 + Math.random() * 22;
+    h.style.left = Math.random() * 100 + 'vw';
+    h.style.fontSize = tamanho + 'px';
+    h.style.animationDuration = (8 + Math.random() * 10) + 's';
+    h.style.animationDelay = (Math.random() * 10) + 's';
+    body.appendChild(h);
+  }
+</script>
+
+</body>
+</html>
