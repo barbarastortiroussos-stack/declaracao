@@ -1,1 +1,91 @@
 
+
+/* =========================================
+   ANIMAÇÕES — NOSSO UNIVERSO
+========================================= */
+
+/* Coração pulsante */
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    15% {
+        transform: scale(1.12);
+    }
+
+    30% {
+        transform: scale(0.96);
+    }
+
+    45% {
+        transform: scale(1.08);
+    }
+
+    60% {
+        transform: scale(1);
+    }
+}
+
+
+/* Pétalas flutuantes */
+
+@keyframes floatPetal {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.35;
+    }
+
+    85% {
+        opacity: 0.2;
+    }
+
+    100% {
+        transform: translateY(-110vh) rotate(300deg);
+        opacity: 0;
+    }
+}
+
+
+/* Pequeno movimento de navegação */
+
+@keyframes softBounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(7px);
+    }
+}
+
+
+/* Disco de vinil */
+
+@keyframes vinylSpin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* Brilho delicado */
+
+@keyframes softGlow {
+    0%, 100% {
+        opacity: 0.25;
+    }
+
+    50% {
+        opacity: 0.6;
+    }
+}
